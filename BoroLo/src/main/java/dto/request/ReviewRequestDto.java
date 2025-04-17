@@ -30,4 +30,4 @@ public class ReviewRequestDto {
 	public void setRating(Integer rating) {
 		this.rating = rating;
 	}
-}
+} 

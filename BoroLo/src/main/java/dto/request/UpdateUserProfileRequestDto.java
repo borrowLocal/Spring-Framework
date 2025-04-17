@@ -24,6 +24,5 @@ public class UpdateUserProfileRequestDto {
 	}
 	public void setBirth_date(LocalDate birth_date) {
 		this.birth_date = birth_date;
-	}
-    
+	}   
 }

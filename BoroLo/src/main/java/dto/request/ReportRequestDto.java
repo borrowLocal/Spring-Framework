@@ -23,4 +23,4 @@ public class ReportRequestDto {
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-}
+} 

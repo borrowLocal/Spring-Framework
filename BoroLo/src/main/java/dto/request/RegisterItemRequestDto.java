@@ -58,4 +58,4 @@ public class RegisterItemRequestDto {
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
 	}
-}
+} 
