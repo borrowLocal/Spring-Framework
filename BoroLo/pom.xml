@@ -20,7 +20,6 @@
 		<jsp.version>4.0.0</jsp.version>
 		<jstl.version>3.0.1</jstl.version>
 		
-		
 		<!-- Hibernate / JPA -->
 		<hibernate.version>4.2.1.Final</hibernate.version>
 
@@ -32,17 +31,26 @@
 		<junit.version>4.11</junit.version>
 	</properties>
 	<dependencies>
+		<!-- MySQL -->
 		<dependency>
-	        <groupId>org.mybatis</groupId>
-	        <artifactId>mybatis</artifactId>
-	        <version>3.5.13</version>
-	    </dependency>
+		    <groupId>mysql</groupId>
+		    <artifactId>mysql-connector-java</artifactId>
+		    <version>8.0.33</version>
+		</dependency>
 	
+		<!-- MyBatis -->
 	    <dependency>
 	        <groupId>org.mybatis</groupId>
 	        <artifactId>mybatis-spring</artifactId>
 	        <version>3.0.3</version>
 	    </dependency>
+	    
+		<dependency>
+			<groupId>org.mybatis</groupId>
+			<artifactId>mybatis</artifactId>
+			<version>3.5.7</version>
+		</dependency>
+		
 		<!-- Spring MVC -->
 		<dependency>
 			<groupId>org.springframework</groupId>
