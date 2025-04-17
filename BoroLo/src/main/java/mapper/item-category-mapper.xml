@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="ItemCategoryDao">
+
+    <select id="findAll" resultType="ItemCategory">
+        SELECT * FROM ItemCategory ORDER BY sort
+    </select>
+
+    <select id="findById" resultType="ItemCategory">
+        SELECT * FROM ItemCategory WHERE category_id = #{category_id}
+    </select>
+
+    <insert id="insert" parameterType="ItemCategory">
+		    INSERT INTO ItemCategory (category_name, category_group, sort)
+		    VALUES (#{category_name}, #{category_group}, #{sort})
+		</insert>
+
+		<update id="update" parameterType="ItemCategory">
+		    UPDATE ItemCategory SET
+		        category_name = #{category_name},
+		        category_group = #{category_group},
+		        sort = #{sort}
+		    WHERE category_id = #{category_id}
+		</update>
+		
+    <delete id="delete">
+        DELETE FROM ItemCategory WHERE category_id = #{category_id}
+    </delete>
+
+</mapper>

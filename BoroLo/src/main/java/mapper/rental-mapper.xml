@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="RentalDao">
+
+    <select id="findById" resultType="Rental">
+        SELECT * FROM Rental WHERE rental_id = #{rental_id}
+    </select>
+
+    <select id="findByUserId" resultType="Rental">
+        SELECT * FROM Rental WHERE user_id = #{user_id}
+    </select>
+
+    <select id="findByItemId" resultType="Rental">
+        SELECT * FROM Rental WHERE item_id = #{item_id}
+    </select>
+
+    <insert id="insert" parameterType="Rental">
+        INSERT INTO Rental (
+            startDate, endDate, meetingTime, meetingLocation,
+            rental_status, isApproved, isCompleted, item_id, user_id
+        ) VALUES (
+            #{startDate}, #{endDate}, #{meetingTime}, #{meetingLocation},
+            #{rental_status}, #{isApproved}, #{isCompleted}, #{item_id}, #{user_id}
+        )
+    </insert>
+
+    <update id="updateStatus">
+		    UPDATE Rental
+		    SET rental_status = #{rental_status}
+		    WHERE rental_id = #{rental_id}
+		</update>
+
+    <update id="approveRental">
+        UPDATE Rental SET isApproved = true WHERE rental_id = #{rental_id}
+    </update>
+
+    <update id="completeRental">
+        UPDATE Rental SET isCompleted = true WHERE rental_id = #{rental_id}
+    </update>
+
+</mapper>

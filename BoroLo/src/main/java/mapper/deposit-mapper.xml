@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="DepositDao">
+
+    <select id="findByRentalId" resultType="Deposit">
+        SELECT * FROM Deposit WHERE rental_id = #{rental_id}
+    </select>
+
+    <insert id="insert" parameterType="Deposit">
+        INSERT INTO Deposit (amount, deposit_status, rental_id)
+        VALUES (#{amount}, #{deposit_status}, #{rental_id})
+    </insert>
+
+    <update id="updateStatus">
+        UPDATE Deposit SET deposit_status = #{deposit_status} WHERE deposit_id = #{deposit_id}
+    </update>
+
+</mapper>
