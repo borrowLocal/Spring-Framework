@@ -58,6 +58,7 @@ public class ReviewService {
             dto.setContent(r.getContent());
             dto.setRating(r.getRating());
             dto.setCreated_at(r.getCreated_at());
+            return dto;
         }).collect(Collectors.toList());
     }
 }
