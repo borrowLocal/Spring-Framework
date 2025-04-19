@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dto.request.RegisterItemRequestDto;
+import dto.request.UpdateItemRequestDto;
 import dto.response.ItemDetailResponseDto;
 import dto.response.ItemSummaryDto;
 import service.ItemService;
@@ -58,9 +60,10 @@ public class ItemController {
 
     // 4. 물품 수정
     @PutMapping("/{item_id}")
-    public ResponseEntity<Void> updateItem(@PathVariable int item_id, @RequestBody UpdateItemRequestDto dto) {
+    public ResponseEntity<Void> updateItem(@PathVariable int item_id,
+                                           @RequestBody UpdateItemRequestDto dto) {
         try {
-            itemService.updateItem(item_id, dto);
+            itemService.updateItem(item_id, dto, dto.getUser_id());
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().build();
@@ -69,12 +72,13 @@ public class ItemController {
 
     // 5. 물품 삭제
     @DeleteMapping("/{item_id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable int item_id) {
+    public ResponseEntity<Void> deleteItem(@PathVariable int item_id,
+                                           @RequestParam int user_id) {
         try {
-            itemService.deleteItem(item_id);
+            itemService.deleteItem(item_id, user_id);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
-            return ResponseEntity.notFound().build();
+            return ResponseEntity.badRequest().build();
         }
     }
 }

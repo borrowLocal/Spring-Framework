@@ -10,6 +10,7 @@ import domain.Item;
 import domain.ItemCategory;
 import domain.User;
 import dto.request.RegisterItemRequestDto;
+import dto.request.UpdateItemRequestDto;
 import dto.response.ItemDetailResponseDto;
 import dto.response.ItemSummaryDto;
 import repository.ItemCategoryDao;
@@ -95,11 +96,11 @@ public class ItemService {
             return dto;
         }).collect(Collectors.toList());
     }
-		// 4. 등록 물품 수정
-    public void updateItem(int item_id, UpdateItemRequestDto dto) {
+    // 4. 등록 물품 수정 (소유자 확인 포함)
+    public void updateItem(int item_id, UpdateItemRequestDto dto, int user_id) {
         Item item = itemDao.findById(item_id);
-        if (item == null) {
-            throw new IllegalArgumentException("물품이 존재하지 않습니다.");
+        if (item == null || !item.getUser_id().equals(user_id)) {
+            throw new IllegalArgumentException("수정 권한이 없거나 물품이 존재하지 않습니다.");
         }
 
         item.setTitle(dto.getTitle());
@@ -112,11 +113,12 @@ public class ItemService {
 
         itemDao.update(item);
     }
-		// 5. 물품 삭제
-    public void deleteItem(int item_id) {
+
+    // 5. 물품 삭제 (소유자 확인 포함)
+    public void deleteItem(int item_id, int user_id) {
         Item item = itemDao.findById(item_id);
-        if (item == null) {
-            throw new IllegalArgumentException("삭제할 물품이 존재하지 않습니다.");
+        if (item == null || !item.getUser_id().equals(user_id)) {
+            throw new IllegalArgumentException("삭제 권한이 없거나 물품이 존재하지 않습니다.");
         }
 
         itemDao.delete(item_id);
