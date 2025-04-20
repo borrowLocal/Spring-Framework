@@ -1,6 +1,6 @@
 package dto.request;
 
-public class VerifyPasswordRequestDto {
+public class PasswordverificationRequestDto {
     private Integer user_id;
     private String password;
 

@@ -12,8 +12,8 @@ import dto.request.EmailVerificationRequestDto;
 import dto.request.JoinRequestDto;
 import dto.request.LoginRequestDto;
 import dto.request.PasswordResetRequestDto;
+import dto.request.PasswordverificationRequestDto;
 import dto.request.UpdateUserProfileRequestDto;
-import dto.request.VerifyPasswordRequestDto;
 import dto.response.UserProfileResponseDto;
 import repository.FavoriteDao;
 import repository.ItemDao;
@@ -144,7 +144,7 @@ public class UserService {
     }
 
     // 6. 비밀번호 확인
-    public boolean verifyPassword(VerifyPasswordRequestDto dto) {
+    public boolean verifyPassword(PasswordverificationRequestDto dto) {
         User user = userDao.findById(dto.getUser_id());
 
         if (user == null || user.getIs_deleted()) {
