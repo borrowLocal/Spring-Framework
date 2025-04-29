@@ -87,8 +87,11 @@ public class UserController {
 
     // 5-2. 개인정보 수정
     @PutMapping("/{user_id}")
-    public ResponseEntity<Void> updateProfile(@RequestBody UpdateUserProfileRequestDto dto) {
+    public ResponseEntity<Void> updateProfile(@PathVariable int user_id, @RequestBody UpdateUserProfileRequestDto dto) {
         try {
+            if (dto.getUser_id() == null || !dto.getUser_id().equals(user_id)) {
+                throw new IllegalArgumentException("잘못된 접근입니다.");
+            }
             userService.updateUserProfile(dto);
             return ResponseEntity.ok().build();
         } catch (IllegalArgumentException e) {
