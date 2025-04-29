@@ -16,8 +16,8 @@ import dto.request.EmailVerificationRequestDto;
 import dto.request.JoinRequestDto;
 import dto.request.LoginRequestDto;
 import dto.request.PasswordResetRequestDto;
+import dto.request.PasswordverificationRequestDto;
 import dto.request.UpdateUserProfileRequestDto;
-import dto.request.VerifyPasswordRequestDto;
 import dto.response.UserProfileResponseDto;
 import service.UserService;
 
@@ -98,7 +98,7 @@ public class UserController {
 
     // 6. 비밀번호 확인
     @PostMapping("/verify-password")
-    public ResponseEntity<Boolean> verifyPassword(@RequestBody VerifyPasswordRequestDto dto) {
+    public ResponseEntity<Boolean> verifyPassword(@RequestBody PasswordverificationRequestDto dto) {
         try {
             boolean result = userService.verifyPassword(dto);
             return ResponseEntity.ok(result);
