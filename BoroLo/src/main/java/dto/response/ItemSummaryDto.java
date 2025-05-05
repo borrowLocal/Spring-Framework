@@ -3,6 +3,7 @@ package dto.response;
 public class ItemSummaryDto {
     private Integer item_id;
     private String title;
+    private Integer quantity;
     private Integer price_per_day;
     private String image_url;
     private String location;
@@ -19,6 +20,12 @@ public class ItemSummaryDto {
 	}
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	public Integer getPrice_per_day() {
 		return price_per_day;

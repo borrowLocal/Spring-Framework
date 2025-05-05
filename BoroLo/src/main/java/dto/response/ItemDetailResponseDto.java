@@ -4,6 +4,7 @@ public class ItemDetailResponseDto {
     private Integer item_id;
     private String title;
     private String description;
+    private Integer quantity;
     private Integer price_per_day;
     private Integer deposit_amount;
     private String image_url;
@@ -30,6 +31,12 @@ public class ItemDetailResponseDto {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	public Integer getPrice_per_day() {
 		return price_per_day;

@@ -3,6 +3,7 @@ package dto.request;
 public class UpdateItemRequestDto {
     private String title;
     private String description;
+    private Integer quantity;
     private Integer price_per_day;
     private Integer deposit_amount;
     private String image_url;
@@ -20,6 +21,12 @@ public class UpdateItemRequestDto {
 	}
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	public Integer getQuantity() {
+		return quantity;
+	}
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	public Integer getPrice_per_day() {
 		return price_per_day;
@@ -50,7 +57,6 @@ public class UpdateItemRequestDto {
 	}
 	public void setUser_id(Integer user_id) {
 		this.user_id = user_id;
-	}
-    
+	}   
     
 }

@@ -7,6 +7,7 @@ public class UserLocation {
     private Integer user_id;
     private BigDecimal lat;
     private BigDecimal lng;
+    private String district;
     private Boolean is_manual;
     private LocalDateTime update_time;
 
@@ -19,6 +20,9 @@ public class UserLocation {
     public BigDecimal getLng() { return lng; }
     public void setLng(BigDecimal lng) { this.lng = lng; }
 
+    public String getDistrict() { return district; }
+    public void setDistrict(String district) { this.district = district; }
+    
     public Boolean getIs_manual() { return is_manual; }
     public void setIs_manual(Boolean is_manual) { this.is_manual = is_manual; }
 
