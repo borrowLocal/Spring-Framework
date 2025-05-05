@@ -21,7 +21,7 @@
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 	    <property name="dataSource" ref="dataSource"/>
-	    <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+	    <property name="mapperLocations" value="file:src/main/java/mapper/*.xml"/>
 	</bean>
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -38,6 +38,13 @@
 			</list>
 		</property>
 		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	    <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
+	    <property name="url" value="jdbc:mysql://localhost:3306/borolo?serverTimezone=Asia/Seoul" />
+	    <property name="username" value="your_mysql_username" />
+	    <property name="password" value="your_mysql_password" />
 	</bean>
 
 	<mvc:interceptors>
