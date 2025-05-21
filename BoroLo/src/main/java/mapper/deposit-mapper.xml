@@ -5,17 +5,28 @@
 
 <mapper namespace="DepositDao">
 
-    <select id="findByRentalId" resultType="Deposit">
-        SELECT * FROM Deposit WHERE rental_id = #{rental_id}
+    <select id="findByRenterUserId" resultType="dto.response.DepositResponseDto">
+        SELECT 
+            D.deposit_id, D.amount, D.deposit_status, D.rental_id,
+            I.title AS item_title,
+            U.nick_name AS counterparty_nick_name
+        FROM Deposit D
+        JOIN Rental R ON D.rental_id = R.rental_id
+        JOIN Item I ON R.item_id = I.item_id
+        JOIN "User" U ON I.user_id = U.user_id
+        WHERE R.user_id = #{user_id}
     </select>
 
-    <insert id="insert" parameterType="Deposit">
-        INSERT INTO Deposit (amount, deposit_status, rental_id)
-        VALUES (#{amount}, #{deposit_status}, #{rental_id})
-    </insert>
-
-    <update id="updateStatus">
-        UPDATE Deposit SET deposit_status = #{deposit_status} WHERE deposit_id = #{deposit_id}
-    </update>
+    <select id="findByItemOwnerId" resultType="dto.response.DepositResponseDto">
+        SELECT 
+            D.deposit_id, D.amount, D.deposit_status, D.rental_id,
+            I.title AS item_title,
+            U.nick_name AS counterparty_nick_name
+        FROM Deposit D
+        JOIN Rental R ON D.rental_id = R.rental_id
+        JOIN Item I ON R.item_id = I.item_id
+        JOIN "User" U ON R.user_id = U.user_id
+        WHERE I.user_id = #{user_id}
+    </select>
 
 </mapper>

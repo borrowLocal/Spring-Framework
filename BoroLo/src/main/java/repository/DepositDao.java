@@ -1,10 +1,10 @@
 package repository;
 
-import domain.Deposit;
+import java.util.List;
+
+import dto.response.DepositResponseDto;
 
 public interface DepositDao {
-    Deposit findByRentalId(int rental_id);
-
-    void insert(Deposit deposit);
-    void updateStatus(int deposit_id, String status);
+    List<DepositResponseDto> findByRenterUserId(int user_id);
+    List<DepositResponseDto> findByItemOwnerId(int user_id);
 }
